@@ -30,38 +30,7 @@ export default function Home() {
   ];
 
   return (
-    <main style={{ minHeight: '100vh', paddingBottom: '80px' }}>
-      {/* Top Notification Bar */}
-      <header
-        style={{
-          borderBottom: '1px solid var(--color-line)',
-          backgroundColor: 'var(--color-white)',
-          padding: '14px 0',
-        }}
-      >
-        <Container style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '12px' }}>
-          <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
-            <span
-              style={{
-                width: '10px',
-                height: '10px',
-                borderRadius: '50%',
-                backgroundColor: 'var(--color-primary-teal)',
-                display: 'inline-block',
-              }}
-            />
-            <strong style={{ fontFamily: 'var(--font-headings)', fontSize: '15px', color: 'var(--color-ink)' }}>
-              Digital Chautari
-            </strong>
-            <span style={{ color: 'var(--color-muted)', fontSize: '13px' }}>
-              • Kathmandu, Nepal
-            </span>
-          </div>
-          <Badge variant="teal">
-            Part 1 of 10 — Design System & Foundation Active
-          </Badge>
-        </Container>
-      </header>
+    <main style={{ paddingBottom: '80px' }}>
 
       {/* Hero / Header Section */}
       <section className="section-hero">
