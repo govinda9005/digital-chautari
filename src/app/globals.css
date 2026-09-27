@@ -325,14 +325,14 @@ button, input, textarea, select {
 }
 
 /* ==========================================================================
-   Component: Badges / Pills
+   Component: Badges / Pills / Eyebrows
    ========================================================================== */
 
 .badge {
   display: inline-flex;
   align-items: center;
   gap: 6px;
-  padding: 4px 12px;
+  padding: 5px 14px;
   border-radius: var(--radius-badge);
   font-size: 13px;
   font-weight: 600;
@@ -525,7 +525,129 @@ button, input, textarea, select {
   transform: translateX(4px);
 }
 
-/* Responsive Rules for Breakpoint <= 760px */
+/* ==========================================================================
+   Home Hero & Stat Bar Section
+   ========================================================================== */
+
+.home-hero-section {
+  position: relative;
+  padding-top: var(--hero-padding-top);
+  padding-bottom: var(--hero-padding-bottom);
+  background: radial-gradient(circle at 85% 15%, rgba(15, 148, 136, 0.12) 0%, rgba(224, 169, 48, 0.08) 35%, transparent 68%),
+              radial-gradient(circle at 10% 45%, rgba(127, 174, 58, 0.06) 0%, transparent 55%),
+              linear-gradient(180deg, #F1FAF5 0%, var(--color-paper) 100%);
+  border-bottom: 1px solid var(--color-line);
+  overflow: hidden;
+}
+
+.home-hero-content {
+  max-width: 880px;
+  margin: 0 auto;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.home-hero-eyebrow {
+  margin-bottom: 20px;
+}
+
+.home-hero-title {
+  font-size: clamp(2.35rem, 5.2vw + 0.5rem, 3.85rem);
+  font-weight: 800;
+  line-height: 1.14;
+  letter-spacing: -0.03em;
+  color: var(--color-ink);
+  margin-bottom: 22px;
+}
+
+.home-hero-lead {
+  font-size: clamp(1.05rem, 1.4vw + 0.2rem, 1.25rem);
+  line-height: 1.6;
+  color: var(--color-muted);
+  max-width: 700px;
+  margin-bottom: 34px;
+}
+
+.home-hero-actions {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  flex-wrap: wrap;
+  margin-bottom: 56px;
+}
+
+/* Stat Bar Component */
+.stat-bar-container {
+  width: 100%;
+  max-width: 880px;
+  margin: 0 auto;
+}
+
+.stat-bar-card {
+  background-color: var(--color-white);
+  border: 1px solid var(--color-line);
+  border-radius: var(--radius-card);
+  padding: 20px 32px;
+  display: grid;
+  grid-template-columns: 1fr auto 1fr auto 1fr;
+  align-items: center;
+  box-shadow: 0 12px 30px -12px rgba(16, 24, 38, 0.06);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.stat-bar-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 16px 36px -12px rgba(16, 24, 38, 0.09);
+}
+
+.stat-segment {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  padding: 6px 16px;
+}
+
+.stat-icon-box {
+  flex-shrink: 0;
+}
+
+.stat-content {
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+}
+
+.stat-number {
+  font-family: var(--font-headings);
+  font-weight: 800;
+  font-size: 28px;
+  line-height: 1.1;
+  color: var(--color-ink);
+}
+
+.stat-label {
+  font-family: var(--font-body);
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--color-muted);
+  margin-top: 2px;
+  white-space: nowrap;
+}
+
+.stat-divider {
+  width: 1px;
+  height: 48px;
+  background-color: var(--color-line);
+}
+
+/* ==========================================================================
+   Responsive Rules for Breakpoint <= 760px
+   ========================================================================== */
+
 @media (max-width: 760px) {
   .desktop-nav {
     display: none !important;
@@ -537,6 +659,32 @@ button, input, textarea, select {
 
   .hamburger-btn {
     display: inline-flex !important;
+  }
+
+  .home-hero-actions {
+    flex-direction: column;
+    width: 100%;
+    margin-bottom: 40px;
+  }
+
+  .home-hero-actions .btn {
+    width: 100%;
+  }
+
+  .stat-bar-card {
+    grid-template-columns: 1fr;
+    gap: 16px;
+    padding: 20px;
+  }
+
+  .stat-segment {
+    justify-content: flex-start;
+    padding: 4px 0;
+  }
+
+  .stat-divider {
+    width: 100%;
+    height: 1px;
   }
 
   .footer-grid {

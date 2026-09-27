@@ -1,9 +1,12 @@
 import React from 'react';
+import { HomeHero } from '@/components/home/HomeHero';
 import { Container } from '@/components/ui/Container';
 import { Button } from '@/components/ui/Button';
 import { Card } from '@/components/ui/Card';
 import { IconBox } from '@/components/ui/IconBox';
 import { Badge } from '@/components/ui/Badge';
+import { SectionHeading } from '@/components/ui/SectionHeading';
+import { DarkSection } from '@/components/ui/DarkSection';
 import { colors, pastelIconColors } from '@/lib/design-system';
 
 export default function Home() {
@@ -30,50 +33,105 @@ export default function Home() {
   ];
 
   return (
-    <main style={{ paddingBottom: '80px' }}>
+    <main>
+      {/* 1. HOME HERO SECTION & STAT BAR */}
+      <HomeHero />
 
-      {/* Hero / Header Section */}
-      <section className="section-hero">
+      {/* 2. REUSABLE COMPONENT & DESIGN SYSTEM SHOWCASE */}
+      <section className="section-standard">
         <Container>
-          <div style={{ maxWidth: '820px' }}>
-            <Badge variant="gold" style={{ marginBottom: '16px' }}>
-              Design Tokens & Architecture Verification
-            </Badge>
-            <h1 style={{ marginBottom: '20px' }}>
-              Creative Technology <span className="headline-gradient">Engineered for Nepal</span> & Beyond
-            </h1>
-            <p style={{ fontSize: '18px', color: 'var(--color-muted)', lineHeight: '1.6', marginBottom: '28px' }}>
-              Welcome to the foundation of the Digital Chautari web platform. All design tokens, typography scales,
-              curated color palettes, responsive containers, and reusable UI primitives are now configured and ready.
-            </p>
-            <div style={{ display: 'flex', gap: '14px', flexWrap: 'wrap' }}>
-              <Button variant="primary">
-                Primary Button (#0F9488)
-              </Button>
-              <Button variant="secondary">
-                Secondary Button (White)
-              </Button>
-            </div>
+          <SectionHeading
+            eyebrow="Reusable Architecture"
+            eyebrowVariant="teal"
+            title={
+              <>
+                Building Blocks of <span className="headline-gradient">Digital Chautari</span>
+              </>
+            }
+            description="Our modular component library provides responsive, high-performance UI primitives across the entire application."
+          />
+
+          {/* Cards & Micro-interactions Grid */}
+          <div className="grid-standard" style={{ marginBottom: '48px' }}>
+            <Card>
+              <IconBox variant="teal" style={{ marginBottom: '16px' }}>
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <rect width="18" height="18" x="3" y="3" rx="2" />
+                  <path d="m9 8 6 4-6 4Z" />
+                </svg>
+              </IconBox>
+              <h3 style={{ marginBottom: '8px' }}>Interactive Cards</h3>
+              <p className="text-muted" style={{ fontSize: '14px', marginBottom: '16px' }}>
+                1px #E7E5DF border, 22px padding, 12px radius, and smooth -4.5px translateY hover elevation.
+              </p>
+              <Badge variant="teal">12px Radius • 22px Padding</Badge>
+            </Card>
+
+            <Card>
+              <IconBox variant="gold" style={{ marginBottom: '16px' }}>
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
+                </svg>
+              </IconBox>
+              <h3 style={{ marginBottom: '8px' }}>Component Library</h3>
+              <p className="text-muted" style={{ fontSize: '14px', marginBottom: '16px' }}>
+                Pre-built SectionHeading, PageHero, StatBar, Button, Badge, and DarkSection primitives.
+              </p>
+              <Badge variant="gold">Zero CSS Bloat</Badge>
+            </Card>
+
+            <Card>
+              <IconBox variant="leaf" style={{ marginBottom: '16px' }}>
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M20 6 9 17l-5-5" />
+                </svg>
+              </IconBox>
+              <h3 style={{ marginBottom: '8px' }}>Typography & Hierarchy</h3>
+              <p className="text-muted" style={{ fontSize: '14px', marginBottom: '16px' }}>
+                Headings powered by <strong>Sora</strong> (600/700/800) and body copy powered by <strong>Inter</strong> (400/500/600).
+              </p>
+              <Badge variant="leaf">Next.js Font Optimization</Badge>
+            </Card>
           </div>
         </Container>
       </section>
 
-      {/* Foundation Verification Grid */}
-      <section className="section-standard" style={{ borderTop: '1px solid var(--color-line)' }}>
-        <Container>
-          <div style={{ marginBottom: '32px' }}>
-            <h2>1. Centralized Brand Colors</h2>
-            <p className="text-muted" style={{ marginTop: '6px' }}>
-              Exact color specifications defined in CSS custom properties and TypeScript constants.
+      {/* 3. DARK SECTION PRIMITIVE DEMO */}
+      <DarkSection>
+        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '24px' }}>
+          <div>
+            <Badge variant="gold" style={{ marginBottom: '12px' }}>
+              DarkSection Primitive
+            </Badge>
+            <h3 style={{ color: '#FFFFFF', fontSize: '24px', marginBottom: '8px' }}>
+              Engineered for Enterprise Reliability in Nepal
+            </h3>
+            <p style={{ color: '#94A3B8', fontSize: '15px', maxWidth: '580px' }}>
+              Reusable navy container with #0B1220 background and isolated borders for high-impact CTA sections and dark features.
             </p>
           </div>
+          <Button href="/contact" variant="primary">
+            Schedule a Consultation →
+          </Button>
+        </div>
+      </DarkSection>
+
+      {/* 4. DESIGN TOKENS PALETTE INSPECTION */}
+      <section className="section-standard">
+        <Container>
+          <SectionHeading
+            eyebrow="Design Tokens"
+            eyebrowVariant="leaf"
+            title="Palette & Typography Token Inspection"
+            description="Centralized color specifications and 5 pastel icon variants configured according to assignment design tokens."
+          />
 
           <div
             style={{
               display: 'grid',
-              gridTemplateColumns: 'repeat(auto-fill, minmax(180px, 1fr))',
+              gridTemplateColumns: 'repeat(auto-fill, minmax(170px, 1fr))',
               gap: 'var(--grid-gap)',
-              marginBottom: '48px',
+              marginBottom: '40px',
             }}
           >
             {brandSwatches.map((color) => (
@@ -90,7 +148,7 @@ export default function Home() {
                 <div
                   style={{
                     backgroundColor: color.hex,
-                    height: '64px',
+                    height: '56px',
                     borderRadius: '8px',
                     marginBottom: '10px',
                     border: color.hex === colors.paper ? '1px solid var(--color-line)' : 'none',
@@ -104,30 +162,22 @@ export default function Home() {
                 >
                   {color.hex}
                 </div>
-                <div style={{ fontSize: '14px', fontWeight: 600, color: 'var(--color-ink)' }}>{color.name}</div>
+                <div style={{ fontSize: '13px', fontWeight: 600, color: 'var(--color-ink)' }}>{color.name}</div>
                 <div style={{ fontSize: '12px', color: 'var(--color-muted)' }}>{color.hex}</div>
               </div>
             ))}
           </div>
 
-          {/* Pastel Icon Chips */}
-          <div style={{ marginBottom: '32px' }}>
-            <h2>2. Pastel Icon Backgrounds & Icon Chips</h2>
-            <p className="text-muted" style={{ marginTop: '6px' }}>
-              Reusable 10px radius pastel chips for card iconography.
-            </p>
-          </div>
-
+          {/* Pastel Swatches */}
           <div
             style={{
               display: 'grid',
-              gridTemplateColumns: 'repeat(auto-fill, minmax(200px, 1fr))',
+              gridTemplateColumns: 'repeat(auto-fill, minmax(190px, 1fr))',
               gap: 'var(--grid-gap)',
-              marginBottom: '48px',
             }}
           >
             {pastelSwatches.map((pastel) => (
-              <Card key={pastel.hex} style={{ display: 'flex', alignItems: 'center', gap: '14px' }}>
+              <Card key={pastel.hex} style={{ display: 'flex', alignItems: 'center', gap: '14px', padding: '16px' }}>
                 <IconBox variant={pastel.variant}>
                   <svg
                     width="20"
@@ -149,96 +199,6 @@ export default function Home() {
               </Card>
             ))}
           </div>
-
-          {/* Cards & Elevation Micro-interactions */}
-          <div style={{ marginBottom: '32px' }}>
-            <h2>3. Interactive Cards & Hover Elevation</h2>
-            <p className="text-muted" style={{ marginTop: '6px' }}>
-              1px solid #E7E5DF border, 22px padding, 12px radius, and -4.5px translateY hover effect.
-            </p>
-          </div>
-
-          <div className="grid-standard" style={{ marginBottom: '48px' }}>
-            <Card>
-              <IconBox variant="teal" style={{ marginBottom: '16px' }}>
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                  <rect width="18" height="18" x="3" y="3" rx="2" />
-                  <path d="m9 8 6 4-6 4Z" />
-                </svg>
-              </IconBox>
-              <h3 style={{ marginBottom: '8px' }}>Standard Card (Light)</h3>
-              <p className="text-muted" style={{ fontSize: '14px', marginBottom: '16px' }}>
-                Hover over this card to verify the smooth translateY(-4.5px) micro-interaction and soft 0 16px 30px shadow.
-              </p>
-              <Badge variant="teal">12px Radius • 22px Padding</Badge>
-            </Card>
-
-            <Card variant="navy">
-              <IconBox variant="gold" style={{ marginBottom: '16px' }}>
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                  <path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6" />
-                </svg>
-              </IconBox>
-              <h3 style={{ color: 'var(--color-paper)', marginBottom: '8px' }}>Navy Card Theme</h3>
-              <p style={{ color: '#94A3B8', fontSize: '14px', marginBottom: '16px' }}>
-                Designed for dark sections (#101D2B) with 1px #223140 border and custom deep elevation.
-              </p>
-              <Badge variant="gold">Navy Token Variant</Badge>
-            </Card>
-
-            <Card>
-              <IconBox variant="leaf" style={{ marginBottom: '16px' }}>
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                  <path d="M20 6 9 17l-5-5" />
-                </svg>
-              </IconBox>
-              <h3 style={{ marginBottom: '8px' }}>Typography & Hierarchy</h3>
-              <p className="text-muted" style={{ fontSize: '14px', marginBottom: '16px' }}>
-                Headings powered by <strong>Sora</strong> (600, 700, 800) and body copy powered by <strong>Inter</strong> (400, 500, 600).
-              </p>
-              <Badge variant="leaf">Next.js Font Optimization</Badge>
-            </Card>
-          </div>
-
-          {/* Typography Scale Table */}
-          <div style={{ marginBottom: '32px' }}>
-            <h2>4. Typography System Verification</h2>
-            <p className="text-muted" style={{ marginTop: '6px' }}>
-              Base 16px size, 1.5 line height, #101826 body color.
-            </p>
-          </div>
-
-          <Card style={{ padding: '24px' }}>
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
-              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline', borderBottom: '1px solid var(--color-line)', paddingBottom: '12px', flexWrap: 'wrap', gap: '8px' }}>
-                <span style={{ fontFamily: 'var(--font-headings)', fontSize: '28px', fontWeight: 800 }}>
-                  Sora 800 — Primary Display H1
-                </span>
-                <span style={{ fontSize: '13px', color: 'var(--color-muted)' }}>Clamp (2rem – 3.25rem)</span>
-              </div>
-
-              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline', borderBottom: '1px solid var(--color-line)', paddingBottom: '12px', flexWrap: 'wrap', gap: '8px' }}>
-                <span style={{ fontFamily: 'var(--font-headings)', fontSize: '22px', fontWeight: 700 }}>
-                  Sora 700 — Section Subtitle H2
-                </span>
-                <span style={{ fontSize: '13px', color: 'var(--color-muted)' }}>Clamp (1.6rem – 2.25rem)</span>
-              </div>
-
-              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline', borderBottom: '1px solid var(--color-line)', paddingBottom: '12px', flexWrap: 'wrap', gap: '8px' }}>
-                <span style={{ fontFamily: 'var(--font-headings)', fontSize: '18px', fontWeight: 600 }}>
-                  Sora 600 — Component & Card Title H3
-                </span>
-                <span style={{ fontSize: '13px', color: 'var(--color-muted)' }}>Clamp (1.25rem – 1.5rem)</span>
-              </div>
-
-              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline', flexWrap: 'wrap', gap: '8px' }}>
-                <span style={{ fontFamily: 'var(--font-body)', fontSize: '16px', fontWeight: 400, color: 'var(--color-ink)' }}>
-                  Inter 400 / 500 / 600 — Standard Body Text (16px base, 1.5 line height, #101826)
-                </span>
-                <span style={{ fontSize: '13px', color: 'var(--color-muted)' }}>16px / 1.5 / #101826</span>
-              </div>
-            </div>
-          </Card>
         </Container>
       </section>
     </main>
