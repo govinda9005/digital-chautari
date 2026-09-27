@@ -1,0 +1,355 @@
+/* ==========================================================================
+   DIGITAL CHAUTARI — DESIGN SYSTEM TOKENS & GLOBAL STYLES
+   Kathmandu, Nepal
+   ========================================================================== */
+
+:root {
+  /* --- Brand & Palette Colors --- */
+  --color-primary-teal: #0F9488;
+  --color-primary-dark: #0B6F66;
+  --color-accent-gold: #E0A930;
+  --color-leaf-green: #7FAE3A;
+  --color-ink: #101826;
+  --color-navy: #0B1220;
+  --color-navy-card: #101D2B;
+  --color-navy-border: #223140;
+  --color-paper: #FBFBF9;
+  --color-line: #E7E5DF;
+  --color-muted: #5B6472;
+  --color-white: #FFFFFF;
+
+  /* --- Pastel Icon Backgrounds --- */
+  --color-pastel-leaf: #E7F5EA;
+  --color-pastel-teal: #E7F2F4;
+  --color-pastel-gold: #FDF1DE;
+  --color-pastel-purple: #F4E9F6;
+  --color-pastel-rose: #FDEEF0;
+
+  /* --- Assignment Headline Gradient --- */
+  --gradient-headline: linear-gradient(90deg, #0F9488 0%, #E0A930 50%, #7FAE3A 100%);
+
+  /* --- Layout & Spacing --- */
+  --max-content-width: 1120px;
+  --padding-desktop: 40px;
+  --padding-mobile: 22px;
+  --section-padding-standard: 64px 0;
+  --section-padding-tight: 48px 0;
+  --hero-padding-top: 84px;
+  --hero-padding-bottom: 48px;
+  --grid-gap: 20px;
+
+  /* --- Radius Scale --- */
+  --radius-icon: 10px;
+  --radius-card: 12px;
+  --radius-input: 12px;
+  --radius-badge: 16px;
+  --radius-pill: 9999px;
+  --radius-btn: 8px;
+
+  /* --- Card Tokens --- */
+  --card-border: 1px solid var(--color-line);
+  --card-padding: 22px;
+  --card-shadow-hover: 0 16px 30px -18px rgba(16, 24, 38, 0.2);
+
+  /* --- Typography Base --- */
+  --font-base-size: 16px;
+  --font-line-height: 1.5;
+  --font-body-color: var(--color-ink);
+
+  /* Font variables populated via Next.js next/font/google */
+  --font-headings: var(--font-sora), 'Sora', system-ui, -apple-system, sans-serif;
+  --font-body: var(--font-inter), 'Inter', system-ui, -apple-system, sans-serif;
+}
+
+/* ==========================================================================
+   CSS Reset & Base Rules
+   ========================================================================== */
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: var(--font-base-size);
+  line-height: var(--font-line-height);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  scroll-behavior: smooth;
+  background-color: var(--color-paper);
+  color: var(--font-body-color);
+}
+
+body {
+  font-family: var(--font-body);
+  font-weight: 400;
+  background-color: var(--color-paper);
+  color: var(--font-body-color);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Headings (Sora) */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-headings);
+  color: var(--color-ink);
+  line-height: 1.25;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+h1 {
+  font-size: clamp(2rem, 4vw + 1rem, 3.25rem);
+  font-weight: 800;
+}
+
+h2 {
+  font-size: clamp(1.6rem, 3vw + 0.5rem, 2.25rem);
+  font-weight: 700;
+}
+
+h3 {
+  font-size: clamp(1.25rem, 2vw + 0.25rem, 1.5rem);
+  font-weight: 600;
+}
+
+h4 {
+  font-size: 1.2rem;
+  font-weight: 600;
+}
+
+p {
+  line-height: var(--font-line-height);
+  color: var(--color-ink);
+}
+
+p.muted, .text-muted {
+  color: var(--color-muted);
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+img, svg {
+  display: block;
+  max-width: 100%;
+}
+
+button, input, textarea, select {
+  font: inherit;
+  color: inherit;
+}
+
+/* ==========================================================================
+   Utility & Core Layout Classes
+   ========================================================================== */
+
+/* Layout Container */
+.container {
+  width: 100%;
+  max-width: var(--max-content-width);
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: var(--padding-desktop);
+  padding-right: var(--padding-desktop);
+}
+
+@media (max-width: 760px) {
+  .container {
+    padding-left: var(--padding-mobile);
+    padding-right: var(--padding-mobile);
+  }
+}
+
+/* Section Spacing */
+.section-hero {
+  padding-top: var(--hero-padding-top);
+  padding-bottom: var(--hero-padding-bottom);
+}
+
+.section-standard {
+  padding: var(--section-padding-standard);
+}
+
+.section-tight {
+  padding: var(--section-padding-tight);
+}
+
+/* Grid helper */
+.grid-standard {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: var(--grid-gap);
+}
+
+/* ==========================================================================
+   Gradient Text Utilities
+   ========================================================================== */
+
+.headline-gradient,
+.text-gradient {
+  background: var(--gradient-headline);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  display: inline-block;
+}
+
+/* ==========================================================================
+   Component: Buttons
+   ========================================================================== */
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 13px 24px;
+  border-radius: var(--radius-btn);
+  font-family: var(--font-body);
+  font-size: 15px;
+  font-weight: 600;
+  line-height: 1.2;
+  cursor: pointer;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  text-align: center;
+  border: 1px solid transparent;
+  user-select: none;
+}
+
+.btn:active {
+  transform: scale(0.98);
+}
+
+/* Primary Button */
+.btn-primary {
+  background-color: var(--color-primary-teal);
+  color: var(--color-white);
+  border-color: var(--color-primary-teal);
+}
+
+.btn-primary:hover {
+  background-color: var(--color-primary-dark);
+  border-color: var(--color-primary-dark);
+  box-shadow: 0 6px 16px -4px rgba(15, 148, 136, 0.35);
+}
+
+/* Secondary Button */
+.btn-secondary {
+  background-color: var(--color-white);
+  color: var(--color-ink);
+  border-color: var(--color-line);
+}
+
+.btn-secondary:hover {
+  background-color: #F8F8F5;
+  border-color: #D6D3CC;
+  box-shadow: 0 4px 12px -2px rgba(16, 24, 38, 0.08);
+}
+
+/* ==========================================================================
+   Component: Card
+   ========================================================================== */
+
+.card {
+  background-color: var(--color-white);
+  border: var(--card-border);
+  padding: var(--card-padding);
+  border-radius: var(--radius-card);
+  transition: transform 0.22s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.22s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.22s ease;
+  position: relative;
+}
+
+.card:hover {
+  transform: translateY(-4.5px);
+  box-shadow: var(--card-shadow-hover);
+  border-color: #DDD9D0;
+}
+
+/* Navy Card Variation (for dark theme sections/cards) */
+.card-navy {
+  background-color: var(--color-navy-card);
+  border: 1px solid var(--color-navy-border);
+  color: var(--color-paper);
+}
+
+.card-navy:hover {
+  border-color: #34485D;
+  box-shadow: 0 16px 30px -18px rgba(0, 0, 0, 0.5);
+}
+
+/* ==========================================================================
+   Component: Icon Chips / Pastel Backgrounds
+   ========================================================================== */
+
+.icon-chip {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border-radius: var(--radius-icon);
+  flex-shrink: 0;
+  transition: transform 0.2s ease;
+}
+
+.icon-chip-leaf {
+  background-color: var(--color-pastel-leaf);
+  color: var(--color-leaf-green);
+}
+
+.icon-chip-teal {
+  background-color: var(--color-pastel-teal);
+  color: var(--color-primary-teal);
+}
+
+.icon-chip-gold {
+  background-color: var(--color-pastel-gold);
+  color: var(--color-accent-gold);
+}
+
+.icon-chip-purple {
+  background-color: var(--color-pastel-purple);
+  color: #7E4F9E;
+}
+
+.icon-chip-rose {
+  background-color: var(--color-pastel-rose);
+  color: #D9465A;
+}
+
+/* ==========================================================================
+   Component: Badges / Pills
+   ========================================================================== */
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 12px;
+  border-radius: var(--radius-badge);
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  background-color: var(--color-pastel-teal);
+  color: var(--color-primary-teal);
+  border: 1px solid rgba(15, 148, 136, 0.2);
+}
+
+.badge-gold {
+  background-color: var(--color-pastel-gold);
+  color: #996B07;
+  border-color: rgba(224, 169, 48, 0.3);
+}
+
+.badge-leaf {
+  background-color: var(--color-pastel-leaf);
+  color: #557823;
+  border-color: rgba(127, 174, 58, 0.3);
+}
