@@ -296,7 +296,7 @@ button, input, textarea, select {
   height: 44px;
   border-radius: var(--radius-icon);
   flex-shrink: 0;
-  transition: transform 0.2s ease;
+  transition: transform 0.22s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .icon-chip-leaf {
@@ -322,6 +322,12 @@ button, input, textarea, select {
 .icon-chip-rose {
   background-color: var(--color-pastel-rose);
   color: #D9465A;
+}
+
+/* Micro-interaction: Icon scale on card hover */
+.card:hover .icon-chip,
+.dark-stat-card:hover .icon-chip {
+  transform: scale(1.08);
 }
 
 /* ==========================================================================
@@ -645,8 +651,265 @@ button, input, textarea, select {
 }
 
 /* ==========================================================================
-   Responsive Rules for Breakpoint <= 760px
+   Section 1: Feature Strip
    ========================================================================== */
+
+.feature-strip-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--grid-gap);
+}
+
+.feature-strip-card {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  height: 100%;
+}
+
+.feature-title {
+  font-size: 18px;
+  margin-top: 14px;
+  margin-bottom: 8px;
+}
+
+.feature-description {
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+/* ==========================================================================
+   Section 2: Who We Are
+   ========================================================================== */
+
+.who-we-are-grid {
+  display: grid;
+  grid-template-columns: 1.15fr 0.85fr;
+  gap: 48px;
+  align-items: center;
+}
+
+.who-we-are-title {
+  font-size: clamp(1.8rem, 3.2vw + 0.4rem, 2.5rem);
+}
+
+.checklist-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+}
+
+.checklist-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.checklist-check-icon {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background-color: var(--color-pastel-teal);
+  color: var(--color-primary-teal);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.checklist-label {
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--color-ink);
+}
+
+.teaser-cards-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+.teaser-card {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+/* ==========================================================================
+   Section 3: Dark Stats
+   ========================================================================== */
+
+.dark-stats-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+}
+
+.dark-stat-card {
+  background-color: var(--color-navy-card);
+  border: 1px solid var(--color-navy-border);
+  border-radius: var(--radius-card);
+  padding: 22px;
+  transition: transform 0.22s ease, border-color 0.22s ease;
+}
+
+.dark-stat-card:hover {
+  transform: translateY(-4px);
+  border-color: #384C60;
+}
+
+.dark-stat-value {
+  font-family: var(--font-headings);
+  font-size: 32px;
+  font-weight: 800;
+  color: #FFFFFF;
+  line-height: 1.1;
+}
+
+.dark-stat-label {
+  font-size: 15px;
+  font-weight: 700;
+  color: #FFFFFF;
+  margin-bottom: 4px;
+}
+
+.dark-stat-sublabel {
+  font-size: 12px;
+  color: #94A3B8;
+  line-height: 1.4;
+}
+
+/* ==========================================================================
+   Section 4: Products Teaser
+   ========================================================================== */
+
+.products-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+.product-card {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.product-card:hover .product-learn-more {
+  transform: translateX(4px);
+}
+
+/* ==========================================================================
+   Section 5: Sectors
+   ========================================================================== */
+
+.sectors-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+.sector-card {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+/* ==========================================================================
+   Section 6: Four-Step Process
+   ========================================================================== */
+
+.process-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+}
+
+.process-card {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+/* ==========================================================================
+   Section 7: Testimonials
+   ========================================================================== */
+
+.testimonials-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+.testimonial-card {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+/* ==========================================================================
+   Section 8: Blog Teaser
+   ========================================================================== */
+
+.blog-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+.blog-card {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+/* ==========================================================================
+   Section 9: Closing CTA
+   ========================================================================== */
+
+.closing-cta-panel {
+  background: linear-gradient(135deg, var(--color-primary-teal) 0%, var(--color-primary-dark) 48%, var(--color-navy) 100%);
+  border-radius: 20px;
+  padding: clamp(40px, 6vw, 68px) clamp(24px, 5vw, 48px);
+  box-shadow: 0 20px 40px -15px rgba(15, 148, 136, 0.4);
+  position: relative;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+/* ==========================================================================
+   Responsive Rules for Tablet & Mobile (<= 1024px and <= 760px)
+   ========================================================================== */
+
+@media (max-width: 1024px) {
+  .feature-strip-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .dark-stats-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .products-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .sectors-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .process-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .testimonials-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .blog-grid {
+    grid-template-columns: 1fr;
+  }
+}
 
 @media (max-width: 760px) {
   .desktop-nav {
@@ -687,9 +950,51 @@ button, input, textarea, select {
     height: 1px;
   }
 
+  .feature-strip-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .who-we-are-grid {
+    grid-template-columns: 1fr;
+    gap: 36px;
+  }
+
+  .checklist-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .teaser-cards-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .dark-stats-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .sectors-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .process-grid {
+    grid-template-columns: 1fr;
+  }
+
   .footer-grid {
     grid-template-columns: 1fr !important;
     gap: 32px !important;
+  }
+}
+
+/* ==========================================================================
+   Reduced Motion Preferences
+   ========================================================================== */
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
   }
 }
 
