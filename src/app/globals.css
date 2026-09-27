@@ -651,7 +651,56 @@ button, input, textarea, select {
 }
 
 /* ==========================================================================
-   Section 1: Feature Strip
+   Section: Services Rows & Sub-Services
+   ========================================================================== */
+
+.service-row-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.25fr;
+  gap: 48px;
+  align-items: flex-start;
+}
+
+.sub-services-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+.sub-service-card {
+  height: 100%;
+}
+
+/* ==========================================================================
+   Section: Pricing
+   ========================================================================== */
+
+.pricing-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  align-items: stretch;
+}
+
+.pricing-card {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  position: relative;
+}
+
+.pricing-card-popular {
+  transform: translateY(-6px);
+  box-shadow: 0 20px 40px -15px rgba(15, 148, 136, 0.35);
+  border-color: rgba(15, 148, 136, 0.4) !important;
+}
+
+.pricing-card-popular:hover {
+  transform: translateY(-10px);
+}
+
+/* ==========================================================================
+   Section: Feature Strip
    ========================================================================== */
 
 .feature-strip-grid {
@@ -679,7 +728,7 @@ button, input, textarea, select {
 }
 
 /* ==========================================================================
-   Section 2: Who We Are
+   Section: Who We Are
    ========================================================================== */
 
 .who-we-are-grid {
@@ -736,7 +785,7 @@ button, input, textarea, select {
 }
 
 /* ==========================================================================
-   Section 3: Dark Stats
+   Section: Dark Stats
    ========================================================================== */
 
 .dark-stats-grid {
@@ -780,7 +829,7 @@ button, input, textarea, select {
 }
 
 /* ==========================================================================
-   Section 4: Products Teaser
+   Section: Products Teaser
    ========================================================================== */
 
 .products-grid {
@@ -800,7 +849,7 @@ button, input, textarea, select {
 }
 
 /* ==========================================================================
-   Section 5: Sectors
+   Section: Sectors
    ========================================================================== */
 
 .sectors-grid {
@@ -816,7 +865,7 @@ button, input, textarea, select {
 }
 
 /* ==========================================================================
-   Section 6: Four-Step Process
+   Section: Four-Step Process
    ========================================================================== */
 
 .process-grid {
@@ -832,7 +881,7 @@ button, input, textarea, select {
 }
 
 /* ==========================================================================
-   Section 7: Testimonials
+   Section: Testimonials
    ========================================================================== */
 
 .testimonials-grid {
@@ -848,7 +897,7 @@ button, input, textarea, select {
 }
 
 /* ==========================================================================
-   Section 8: Blog Teaser
+   Section: Blog Teaser
    ========================================================================== */
 
 .blog-grid {
@@ -864,7 +913,7 @@ button, input, textarea, select {
 }
 
 /* ==========================================================================
-   Section 9: Closing CTA
+   Section: Closing CTA
    ========================================================================== */
 
 .closing-cta-panel {
@@ -882,6 +931,21 @@ button, input, textarea, select {
    ========================================================================== */
 
 @media (max-width: 1024px) {
+  .service-row-grid {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+
+  .pricing-grid {
+    grid-template-columns: 1fr;
+    max-width: 520px;
+    margin: 0 auto;
+  }
+
+  .pricing-card-popular {
+    transform: none;
+  }
+
   .feature-strip-grid {
     grid-template-columns: repeat(2, 1fr);
   }
@@ -948,6 +1012,10 @@ button, input, textarea, select {
   .stat-divider {
     width: 100%;
     height: 1px;
+  }
+
+  .sub-services-grid {
+    grid-template-columns: 1fr;
   }
 
   .feature-strip-grid {

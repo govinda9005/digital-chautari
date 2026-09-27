@@ -1,49 +1,47 @@
 import React from 'react';
+import type { Metadata } from 'next';
 import { PageHero } from '@/components/ui/PageHero';
-import { Container } from '@/components/ui/Container';
-import { Card } from '@/components/ui/Card';
-import { Button } from '@/components/ui/Button';
-import { IconBox } from '@/components/ui/IconBox';
+import { ServicesList } from '@/components/services/ServicesList';
+import { PricingSection } from '@/components/services/PricingSection';
+import { ServiceIndustries } from '@/components/services/ServiceIndustries';
+import { WhyWorkWithUs } from '@/components/services/WhyWorkWithUs';
+import { ServicesCta } from '@/components/services/ServicesCta';
+
+export const metadata: Metadata = {
+  title: 'Our Services | Digital Chautari - Creative Technology & Engineering',
+  description:
+    'Explore full-stack software development, multimedia content creation, and growth marketing services engineered by Digital Chautari in Kathmandu, Nepal.',
+};
 
 export default function ServicesPage() {
   return (
     <main>
+      {/* 1. Services Hero */}
       <PageHero
-        eyebrow="Our Capabilities"
+        eyebrow="Comprehensive Capabilities"
         eyebrowVariant="teal"
         title={
           <>
-            Strategic <span className="headline-gradient">Services & Engineering</span>
+            Services that <span className="headline-gradient">drive growth</span>
           </>
         }
-        description="From Kathmandu to global markets, we design, engineer, and deploy high-performance software and cloud architectures."
-      >
-        <div style={{ display: 'flex', gap: '12px', flexWrap: 'wrap' }}>
-          <Button href="/contact" variant="primary">
-            Start a Project →
-          </Button>
-          <Button href="/" variant="secondary">
-            ← Return to Home
-          </Button>
-        </div>
-      </PageHero>
+        description="We combine thoughtful product design, full-stack software engineering, and performance marketing to build resilient digital solutions for ambitious brands in Nepal and worldwide."
+      />
 
-      <section className="section-standard" style={{ borderTop: '1px solid var(--color-line)' }}>
-        <Container>
-          <Card style={{ maxWidth: '640px' }}>
-            <IconBox variant="teal" style={{ marginBottom: '14px' }}>
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                <path d="M12 20h9" />
-                <path d="M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4Z" />
-              </svg>
-            </IconBox>
-            <h3 style={{ marginBottom: '8px' }}>Services Architecture Ready</h3>
-            <p className="text-muted" style={{ fontSize: '14px', marginBottom: '16px' }}>
-              PageHero primitive and global layout integration verified. The full interactive service catalog will be built in the upcoming services stage.
-            </p>
-          </Card>
-        </Container>
-      </section>
+      {/* 2. Three Main Service Categories (Digital Marketing, Content Creation, Software Development) */}
+      <ServicesList />
+
+      {/* 3. Transparent Pricing Tiers (Starter, Professional [Most Popular], Enterprise) */}
+      <PricingSection />
+
+      {/* 4. Industries We Work With (Healthcare, E-Commerce, Real Estate, Education, Tourism, Media) */}
+      <ServiceIndustries />
+
+      {/* 5. Dark Navy Advantage Section (6 Checklist Items) */}
+      <WhyWorkWithUs />
+
+      {/* 6. Closing Services CTA */}
+      <ServicesCta />
     </main>
   );
 }
