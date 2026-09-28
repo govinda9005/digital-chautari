@@ -1,49 +1,55 @@
 import React from 'react';
+import type { Metadata } from 'next';
 import { PageHero } from '@/components/ui/PageHero';
-import { Container } from '@/components/ui/Container';
-import { Card } from '@/components/ui/Card';
-import { Button } from '@/components/ui/Button';
-import { IconBox } from '@/components/ui/IconBox';
+import { AboutStory } from '@/components/about/AboutStory';
+import { MissionVision } from '@/components/about/MissionVision';
+import { AboutValues } from '@/components/about/AboutValues';
+import { QualityTrust } from '@/components/about/QualityTrust';
+import { TeamSection } from '@/components/about/TeamSection';
+import { AboutRoadmap } from '@/components/about/AboutRoadmap';
+import { AboutCta } from '@/components/about/AboutCta';
+
+export const metadata: Metadata = {
+  title: 'About Us | Digital Chautari - Creative Technology Studio',
+  description:
+    'Learn about Digital Chautari’s history, philosophy, team organizational structure, core values, and journey from a Kathmandu idea to a digital powerhouse.',
+};
 
 export default function AboutPage() {
   return (
     <main>
+      {/* 1. About Page Hero */}
       <PageHero
-        eyebrow="Our Story & Vision"
+        eyebrow="Our Story & Team"
         eyebrowVariant="leaf"
         title={
           <>
-            About <span className="headline-gradient">Digital Chautari</span>
+            The people behind <span className="headline-gradient">Digital Chautari</span>
           </>
         }
-        description="A collective of creative technologists, software engineers, and designers in Kathmandu shaping high-impact digital experiences."
-      >
-        <div style={{ display: 'flex', gap: '12px', flexWrap: 'wrap' }}>
-          <Button href="/contact" variant="primary">
-            Join Our Team →
-          </Button>
-          <Button href="/" variant="secondary">
-            ← Return to Home
-          </Button>
-        </div>
-      </PageHero>
+        description="Rooted in Kathmandu and inspired by Nepali communal philosophy, we are a multidisciplinary collective of engineers, designers, and strategists shaping high-impact digital experiences."
+      />
 
-      <section className="section-standard" style={{ borderTop: '1px solid var(--color-line)' }}>
-        <Container>
-          <Card style={{ maxWidth: '640px' }}>
-            <IconBox variant="leaf" style={{ marginBottom: '14px' }}>
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" />
-                <circle cx="9" cy="7" r="4" />
-              </svg>
-            </IconBox>
-            <h3 style={{ marginBottom: '8px' }}>About Platform Ready</h3>
-            <p className="text-muted" style={{ fontSize: '14px', marginBottom: '16px' }}>
-              PageHero primitive and global layout integration verified. Company history, team profiles, and Kathmandu values will be introduced in the About stage.
-            </p>
-          </Card>
-        </Container>
-      </section>
+      {/* 2. Brand Origin Story & 2x2 Alternating Stat Tiles (Teal, Navy, White, Gold) */}
+      <AboutStory />
+
+      {/* 3. Mission & Vision Dual Cards */}
+      <MissionVision />
+
+      {/* 4. Core Values (Passion, Creativity, Excellence, Collaboration) */}
+      <AboutValues />
+
+      {/* 5. Quality & Trust Dark Navy Section (ISO 9001, Data Protection, Global Delivery, Pan-Nepal Network) */}
+      <QualityTrust />
+
+      {/* 6. Team Organizational Structure (7 Role Cards) */}
+      <TeamSection />
+
+      {/* 7. Growth Roadmap Timeline (2025 The Idea, 2025 First Products, 2026 Health-Tech, 2026 Company Reg) */}
+      <AboutRoadmap />
+
+      {/* 8. Career & Partnership Closing CTA */}
+      <AboutCta />
     </main>
   );
 }
