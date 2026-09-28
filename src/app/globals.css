@@ -700,6 +700,178 @@ button, input, textarea, select {
 }
 
 /* ==========================================================================
+   Section: Product Switcher & Interactive Tabs
+   ========================================================================== */
+
+.product-tabs-container {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 40px;
+}
+
+.product-tabs-wrapper {
+  display: inline-flex;
+  background-color: var(--color-white);
+  border: 1px solid var(--color-line);
+  padding: 6px;
+  border-radius: 14px;
+  box-shadow: 0 6px 18px -4px rgba(16, 24, 38, 0.05);
+  gap: 6px;
+}
+
+.product-tab-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 22px;
+  border-radius: 10px;
+  font-family: var(--font-body);
+  font-size: 14.5px;
+  font-weight: 600;
+  color: var(--color-muted);
+  background: transparent;
+  border: 1px solid transparent;
+  cursor: pointer;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  user-select: none;
+}
+
+.product-tab-btn:hover {
+  color: var(--color-ink);
+  background-color: var(--color-paper);
+}
+
+.product-tab-btn-active {
+  background-color: var(--color-primary-teal) !important;
+  color: #FFFFFF !important;
+  border-color: var(--color-primary-teal);
+  box-shadow: 0 4px 14px -2px rgba(15, 148, 136, 0.35);
+}
+
+.product-tab-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: var(--color-line);
+  transition: background-color 0.2s ease;
+}
+
+.product-tab-btn-active .product-tab-dot {
+  background-color: #FFFFFF;
+}
+
+.selected-product-grid {
+  display: grid;
+  grid-template-columns: 1.15fr 0.85fr;
+  gap: 48px;
+  align-items: center;
+}
+
+.product-stats-row {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+  margin-bottom: 24px;
+}
+
+.product-stat-item {
+  padding: 12px;
+  background-color: var(--color-paper);
+  border-radius: 8px;
+  border: 1px solid var(--color-line);
+  text-align: center;
+}
+
+.product-stat-value {
+  font-family: var(--font-headings);
+  font-size: 20px;
+  font-weight: 800;
+  color: var(--color-primary-teal);
+}
+
+.product-stat-label {
+  font-size: 11px;
+  color: var(--color-muted);
+  font-weight: 600;
+  margin-top: 2px;
+}
+
+/* Mock UI Preview Styles */
+.mock-ui-window {
+  background-color: var(--color-white);
+  border: 1px solid var(--color-line);
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 16px 36px -12px rgba(16, 24, 38, 0.12);
+}
+
+.mock-ui-header {
+  background-color: #F8F8F6;
+  border-bottom: 1px solid var(--color-line);
+  padding: 10px 14px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.mock-ui-dots {
+  display: flex;
+  gap: 6px;
+}
+
+.mock-ui-dots span {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  display: block;
+}
+
+.mock-ui-url {
+  font-size: 10.5px;
+  color: var(--color-muted);
+  font-family: monospace;
+  background-color: #FFFFFF;
+  padding: 3px 10px;
+  border-radius: 4px;
+  border: 1px solid var(--color-line);
+}
+
+.mock-ui-body {
+  padding: 16px;
+  background-color: var(--color-paper);
+}
+
+.mock-metric-box {
+  background-color: var(--color-white);
+  border: 1px solid var(--color-line);
+  border-radius: 8px;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+}
+
+.mock-metric-label {
+  font-size: 10px;
+  color: var(--color-muted);
+  text-transform: uppercase;
+  font-weight: 600;
+}
+
+.mock-metric-value {
+  font-size: 16px;
+  font-weight: 800;
+  color: var(--color-ink);
+  margin: 2px 0;
+}
+
+.mock-panel-card {
+  background-color: var(--color-white);
+  border: 1px solid var(--color-line);
+  border-radius: 8px;
+  padding: 12px;
+}
+
+/* ==========================================================================
    Section: Feature Strip
    ========================================================================== */
 
@@ -931,6 +1103,11 @@ button, input, textarea, select {
    ========================================================================== */
 
 @media (max-width: 1024px) {
+  .selected-product-grid {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+
   .service-row-grid {
     grid-template-columns: 1fr;
     gap: 32px;
@@ -1012,6 +1189,24 @@ button, input, textarea, select {
   .stat-divider {
     width: 100%;
     height: 1px;
+  }
+
+  .product-tabs-wrapper {
+    overflow-x: auto;
+    width: 100%;
+    justify-content: flex-start;
+    padding: 4px;
+  }
+
+  .product-tab-btn {
+    white-space: nowrap;
+    padding: 8px 14px;
+    font-size: 13px;
+  }
+
+  .product-stats-row {
+    grid-template-columns: 1fr;
+    gap: 10px;
   }
 
   .sub-services-grid {

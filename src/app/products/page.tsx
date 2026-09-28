@@ -1,48 +1,39 @@
 import React from 'react';
+import type { Metadata } from 'next';
 import { PageHero } from '@/components/ui/PageHero';
-import { Container } from '@/components/ui/Container';
-import { Card } from '@/components/ui/Card';
-import { Button } from '@/components/ui/Button';
-import { IconBox } from '@/components/ui/IconBox';
+import { ProductSwitcher } from '@/components/products/ProductSwitcher';
+import { PhysioSpotlight } from '@/components/products/PhysioSpotlight';
+import { ProductsCta } from '@/components/products/ProductsCta';
+
+export const metadata: Metadata = {
+  title: 'Our Products & Ventures | Digital Chautari - Creative Technology Studio',
+  description:
+    'Discover Digital Chautari’s proprietary ventures: Eco Creative Marketing Agency, One Content Creation Studio, and Physio@Home tele-rehabilitation platform.',
+};
 
 export default function ProductsPage() {
   return (
     <main>
+      {/* 1. Products Page Hero */}
       <PageHero
-        eyebrow="Proprietary Innovations"
+        eyebrow="Proprietary Ecosystem"
         eyebrowVariant="gold"
         title={
           <>
-            Modern <span className="headline-gradient">Digital Products</span>
+            Three ventures, <span className="headline-gradient">one vision</span>
           </>
         }
-        description="Scalable SaaS platforms, developer utilities, and modern enterprise products built from the ground up in Kathmandu, Nepal."
-      >
-        <div style={{ display: 'flex', gap: '12px', flexWrap: 'wrap' }}>
-          <Button href="/contact" variant="primary">
-            Request Product Demo →
-          </Button>
-          <Button href="/" variant="secondary">
-            ← Return to Home
-          </Button>
-        </div>
-      </PageHero>
+        description="We build our own products with the same rigor and passion we bring to our client partnerships. Explore our specialized agency, media studio, and health-tech platforms born in Kathmandu, Nepal."
+      />
 
-      <section className="section-standard" style={{ borderTop: '1px solid var(--color-line)' }}>
-        <Container>
-          <Card style={{ maxWidth: '640px' }}>
-            <IconBox variant="gold" style={{ marginBottom: '14px' }}>
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16Z" />
-              </svg>
-            </IconBox>
-            <h3 style={{ marginBottom: '8px' }}>Product Catalog Ready</h3>
-            <p className="text-muted" style={{ fontSize: '14px', marginBottom: '16px' }}>
-              PageHero primitive and product route scaffolding verified. Product cards and technical highlights will be built in the dedicated Products stage.
-            </p>
-          </Card>
-        </Container>
-      </section>
+      {/* 2. Interactive Product Tab Switcher (Eco Creative, One Content, Physio@Home) */}
+      <ProductSwitcher />
+
+      {/* 3. Dark Navy Spotlight (Physio@Home — Healthcare Reimagined) */}
+      <PhysioSpotlight />
+
+      {/* 4. Venture Collaboration Closing CTA */}
+      <ProductsCta />
     </main>
   );
 }
