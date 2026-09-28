@@ -27,6 +27,7 @@ export function ProductSwitcher() {
                   key={product.id}
                   type="button"
                   role="tab"
+                  tabIndex={isActive ? 0 : -1}
                   aria-selected={isActive}
                   aria-controls={`panel-${product.id}`}
                   id={`tab-${product.id}`}

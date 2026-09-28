@@ -169,12 +169,16 @@ export function ContactForm() {
               htmlFor="name"
               style={{ display: 'block', fontSize: '13.5px', fontWeight: 700, color: 'var(--color-ink)', marginBottom: '8px' }}
             >
-              Full Name <span style={{ color: '#EF4444' }}>*</span>
+              Full Name <span style={{ color: '#EF4444' }} aria-hidden="true">*</span>
             </label>
             <input
               id="name"
               type="text"
               placeholder="e.g. Aarav Sharma"
+              required
+              aria-required="true"
+              aria-invalid={!!errors.name}
+              aria-describedby={errors.name ? 'name-error' : undefined}
               value={formData.name}
               onChange={(e) => {
                 setFormData({ ...formData, name: e.target.value });
@@ -182,7 +186,11 @@ export function ContactForm() {
               }}
               className={`form-input ${errors.name ? 'form-input-error' : ''}`}
             />
-            {errors.name && <span className="form-error-msg">{errors.name}</span>}
+            {errors.name && (
+              <span id="name-error" role="alert" className="form-error-msg">
+                {errors.name}
+              </span>
+            )}
           </div>
 
           {/* Email Field */}
@@ -191,12 +199,16 @@ export function ContactForm() {
               htmlFor="email"
               style={{ display: 'block', fontSize: '13.5px', fontWeight: 700, color: 'var(--color-ink)', marginBottom: '8px' }}
             >
-              Email Address <span style={{ color: '#EF4444' }}>*</span>
+              Email Address <span style={{ color: '#EF4444' }} aria-hidden="true">*</span>
             </label>
             <input
               id="email"
               type="email"
               placeholder="aarav@company.com"
+              required
+              aria-required="true"
+              aria-invalid={!!errors.email}
+              aria-describedby={errors.email ? 'email-error' : undefined}
               value={formData.email}
               onChange={(e) => {
                 setFormData({ ...formData, email: e.target.value });
@@ -204,7 +216,11 @@ export function ContactForm() {
               }}
               className={`form-input ${errors.email ? 'form-input-error' : ''}`}
             />
-            {errors.email && <span className="form-error-msg">{errors.email}</span>}
+            {errors.email && (
+              <span id="email-error" role="alert" className="form-error-msg">
+                {errors.email}
+              </span>
+            )}
           </div>
         </div>
 
@@ -214,12 +230,16 @@ export function ContactForm() {
             htmlFor="subject"
             style={{ display: 'block', fontSize: '13.5px', fontWeight: 700, color: 'var(--color-ink)', marginBottom: '8px' }}
           >
-            Subject / Project Title <span style={{ color: '#EF4444' }}>*</span>
+            Subject / Project Title <span style={{ color: '#EF4444' }} aria-hidden="true">*</span>
           </label>
           <input
             id="subject"
             type="text"
             placeholder="e.g. Next.js Enterprise Portal for HealthTech"
+            required
+            aria-required="true"
+            aria-invalid={!!errors.subject}
+            aria-describedby={errors.subject ? 'subject-error' : undefined}
             value={formData.subject}
             onChange={(e) => {
               setFormData({ ...formData, subject: e.target.value });
@@ -227,21 +247,35 @@ export function ContactForm() {
             }}
             className={`form-input ${errors.subject ? 'form-input-error' : ''}`}
           />
-          {errors.subject && <span className="form-error-msg">{errors.subject}</span>}
+          {errors.subject && (
+            <span id="subject-error" role="alert" className="form-error-msg">
+              {errors.subject}
+            </span>
+          )}
         </div>
 
         {/* Row 3: Project Type Clickable Pills */}
         <div style={{ marginBottom: '22px' }}>
-          <label style={{ display: 'block', fontSize: '13.5px', fontWeight: 700, color: 'var(--color-ink)', marginBottom: '10px' }}>
-            Project Type <span style={{ color: '#EF4444' }}>*</span>
+          <label
+            id="project-type-label"
+            style={{ display: 'block', fontSize: '13.5px', fontWeight: 700, color: 'var(--color-ink)', marginBottom: '10px' }}
+          >
+            Project Type <span style={{ color: '#EF4444' }} aria-hidden="true">*</span>
           </label>
-          <div style={{ display: 'flex', flexWrap: 'wrap', gap: '8px' }}>
+          <div
+            role="radiogroup"
+            aria-labelledby="project-type-label"
+            aria-required="true"
+            style={{ display: 'flex', flexWrap: 'wrap', gap: '8px' }}
+          >
             {projectTypes.map((type) => {
               const isSelected = formData.projectType === type;
               return (
                 <button
                   key={type}
                   type="button"
+                  role="radio"
+                  aria-checked={isSelected}
                   onClick={() => {
                     setFormData({ ...formData, projectType: type });
                     if (errors.projectType) setErrors({ ...errors, projectType: undefined });
@@ -254,7 +288,11 @@ export function ContactForm() {
               );
             })}
           </div>
-          {errors.projectType && <span className="form-error-msg">{errors.projectType}</span>}
+          {errors.projectType && (
+            <span role="alert" className="form-error-msg">
+              {errors.projectType}
+            </span>
+          )}
         </div>
 
         {/* Row 4: Message Textarea */}
@@ -263,12 +301,16 @@ export function ContactForm() {
             htmlFor="message"
             style={{ display: 'block', fontSize: '13.5px', fontWeight: 700, color: 'var(--color-ink)', marginBottom: '8px' }}
           >
-            Project Details & Goals <span style={{ color: '#EF4444' }}>*</span>
+            Project Details & Goals <span style={{ color: '#EF4444' }} aria-hidden="true">*</span>
           </label>
           <textarea
             id="message"
             rows={5}
             placeholder="Tell us about your objectives, timeline, budget range, and current infrastructure..."
+            required
+            aria-required="true"
+            aria-invalid={!!errors.message}
+            aria-describedby={errors.message ? 'message-error' : undefined}
             value={formData.message}
             onChange={(e) => {
               setFormData({ ...formData, message: e.target.value });
@@ -276,7 +318,11 @@ export function ContactForm() {
             }}
             className={`form-textarea ${errors.message ? 'form-input-error' : ''}`}
           />
-          {errors.message && <span className="form-error-msg">{errors.message}</span>}
+          {errors.message && (
+            <span id="message-error" role="alert" className="form-error-msg">
+              {errors.message}
+            </span>
+          )}
         </div>
 
         {/* Submit Button & Demo Note */}

@@ -49,8 +49,11 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${inter.variable} ${sora.variable}`}>
       <body style={{ minHeight: '100vh', display: 'flex', flexDirection: 'column' }}>
+        <a href="#main-content" className="skip-to-content">
+          Skip to main content
+        </a>
         <Header />
-        <div style={{ flex: 1 }}>{children}</div>
+        <div id="main-content" style={{ flex: 1 }}>{children}</div>
         <Footer />
       </body>
     </html>

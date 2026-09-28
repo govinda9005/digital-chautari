@@ -167,6 +167,8 @@ export function Header() {
 
       <div
         id="mobile-navigation"
+        role="dialog"
+        aria-modal="true"
         className={`mobile-menu-drawer ${isMobileMenuOpen ? 'open' : ''}`}
         aria-label="Mobile Navigation"
       >
