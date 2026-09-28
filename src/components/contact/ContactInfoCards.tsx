@@ -26,7 +26,7 @@ const contactChannels: ContactInfoItem[] = [
   },
   {
     title: 'Email',
-    value: 'hello@digitalchautari.com.np',
+    value: 'hello@digichautari.com.np',
     detail: 'Demo Channel • Inquiries & Support',
     variant: 'gold',
     icon: (
